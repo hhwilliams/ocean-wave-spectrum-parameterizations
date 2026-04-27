@@ -23,6 +23,6 @@ Contains pickle (.pkl) files with data analyzed from SoCal2013, HiRes 2010, GOTE
 | SoCal2013       | lenain.pkl                 | $k$, $\phi(k)$, $k_n$        |
 | HiRes 2010      | pizzo.pkl                  | $k$, $\phi(k)$, $u_*$, $k_n$ |
 | GOTEX           | romero_2010/romero_[].pkl  | $k$, $\phi(k)$, $u_*$, $X_e$, $U_{10}$ |
-| ASIT TKE.       | hogan_2025/hogan_[].pkl    | $k$, $\phi(k)$, $u_*$, $U_{10}$, $\theta_{wind}$, $k_n$|
+| ASIT TKE        | hogan_2025/hogan_[].pkl    | $k$, $\phi(k)$, $u_*$, $U_{10}$, $\theta_{wind}$, $k_n$|
 
 
