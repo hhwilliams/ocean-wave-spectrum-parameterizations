@@ -44,7 +44,7 @@ class StatData:
         return ustar
     
 
-    def Uz(self, z):
+    def Uz(self, z, val='U'):
         # * isolate 2 points closest to y
         # dy = (ym[2]-ym[1])
 
@@ -61,7 +61,7 @@ class StatData:
         # * if this is the correct location, just return
         tol = 1e-2
         if y1 - z < tol:
-            return data1['U']
+            return data1[val]
         
         # * find y2 based on direction of interpolation
         y2 = y1 + np.sign(z-y1) * dy
@@ -70,8 +70,8 @@ class StatData:
         idx2 = (self.data['y']-y2).abs().idxmin()
         data2 = self.data.loc[idx2]
 
-        u1 = data1['U'].to_numpy()
-        u2 = data2['U'].to_numpy()
+        u1 = data1[val].to_numpy()
+        u2 = data2[val].to_numpy()
 
         # * interpolate
         if y2 == y1:

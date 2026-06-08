@@ -69,6 +69,9 @@ class EquilibriumSpec:
         return Ek
 
 
-    def E_k(self):
-        return self._Ek(self.P, self.k)
+    def E_k(self, k=None):
+        if k is None:
+            k = self.k
+            
+        return self._Ek(self.P, k)
     

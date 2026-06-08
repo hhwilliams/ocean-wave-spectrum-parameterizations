@@ -26,12 +26,23 @@ class JONSWAPSpec:
         return np.exp(-(np.sqrt(self.k) - np.sqrt(self.kp))**2  / (2*self.s**2 * self.kp))
 
 
-    def E_k(self):
-        gam_r = self.gam**self.r
+    def E_k(self, k=None):
+        if k is None:
+            k = self.k
+            
+        s = np.array([0.09 if ki > self.kp else 0.07 for ki in k])
+        r = np.exp(-(np.sqrt(k) - np.sqrt(self.kp))**2  / (2*s**2 * self.kp))
+        gam_r = self.gam**r
         alpha = 0.076 * (self.U10**2 / self.g / self.X)**0.22
-        Ek = alpha / 2 * self.k**(-3) * np.exp(-1.25 * (self.kp / self.k)**2) * gam_r
+        Ek = alpha / 2 * k**(-3) * np.exp(-1.25 * (self.kp / k)**2) * gam_r
 
         return Ek
+    
+
+    def calc_actual_Hs(self):
+        kmany = np.logspace(np.log10(self.kp)-2,np.log10(self.kp)+2,5000)
+        hs_actual = 4 * np.sqrt(np.trapz(self.E_k(kmany),x=kmany))
+        return hs_actual
     
 
     # def E_om(self):

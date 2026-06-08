@@ -14,9 +14,12 @@ class PiersonMoskowitzSpec:
         self.k = np.logspace(-2,1,self.Nk)
 
 
-    def E_k(self):
+    def E_k(self, k=None):
+        if k is None:
+            k = self.k
+
         alpha = 8.1e-3
         beta = 0.74
 
-        Ek = alpha / self.k**3 * np.exp(-beta * (self.k0 / self.k)**2)
+        Ek = alpha / k**3 * np.exp(-beta * (self.k0 / k)**2)
         return Ek
